@@ -14,12 +14,14 @@ spec:
     spec:
       containers:
         - name: jenkins
-          image: psob/jenkins:lastest
-          ports:
-            - containerPort: 8080
-          volumeMounts:
-            - name: jenkins-data
-              mountPath: /var/jenkins_home
+      credentials:
+          - name: regcred
+      image: psob/jenkins:lastest
+        ports:
+          - containerPort: 8080
+      volumeMounts:
+          - name: jenkins-data
+            mountPath: /var/jenkins_home
       volumes:
         - name: jenkins-data
           emptyDir: {}
