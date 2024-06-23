@@ -37,6 +37,7 @@ spec:
       containers:
         - name: jenkins1
           image: docker.io/ps0b/jenkins:latest
+          imagePullPolicy: Always
           ports:
             - containerPort: 8080
               name: http
