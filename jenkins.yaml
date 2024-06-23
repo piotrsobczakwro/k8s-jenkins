@@ -16,7 +16,7 @@ spec:
         - name: jenkins
       credentials:
           - name: regcred
-      image: psob/jenkins:lastest
+      image: index.docker.io/psob/jenkins:lastest
         ports:
           - containerPort: 8080
       volumeMounts:
