@@ -35,8 +35,8 @@ spec:
         app: jenkins
     spec:
       containers:
-        - name: jenkins1
-          image: docker.io/ps0b/jenkins:sha256:6121200b2a029373f4487cf3a1296883e3214a08b3bc3ace3cf28b684c63ec6e
+        - name: jenkins
+          image: docker.io/ps0b/jenkins:lastest
           imagePullPolicy: Always
           ports:
             - containerPort: 8080
