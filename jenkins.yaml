@@ -35,7 +35,7 @@ spec:
         app: jenkins
     spec:
       containers:
-        - name: jenkins
+        - name: jenkins1
           image: docker.io/ps0b/jenkins:latest
           ports:
             - containerPort: 8080
