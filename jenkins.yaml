@@ -1,7 +1,29 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: jenkins
+
+---
+
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: jenkins-pvc
+  namespace: jenkins
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 10Gi
+
+---
+
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: jenkins
+  namespace: jenkins
 spec:
   replicas: 1
   selector:
@@ -13,13 +35,17 @@ spec:
         app: jenkins
     spec:
       containers:
-      - name: jenkins
-        image: jenkins:lastest
-      ports:
-      - containerPort: 8080
-      volumeMounts:
-      - name: jenkins-data
-          mountPath: /var/jenkins_home
+        - name: jenkins
+          image: jenkins/jenkins:lts
+          ports:
+            - containerPort: 8080
+              name: http
+            - containerPort: 50000
+              name: jnlp
+          volumeMounts:
+            - name: jenkins-data
+              mountPath: /var/jenkins_home
       volumes:
         - name: jenkins-data
-          emptyDir: {}
+          persistentVolumeClaim:
+            claimName: jenkins-pvc
