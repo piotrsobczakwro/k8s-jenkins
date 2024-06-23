@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: jenkins
-        image: index.docker.io/jenkins:lastest
+        image: jenkins:lastest
       imagePullSecrets:
       - name: regcred
       ports:
