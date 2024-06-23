@@ -15,8 +15,6 @@ spec:
       containers:
       - name: jenkins
         image: jenkins:lastest
-      imagePullSecrets:
-      - name: regcred
       ports:
       - containerPort: 8080
       volumeMounts:
