@@ -13,15 +13,15 @@ spec:
         app: jenkins
     spec:
       containers:
-        - name: jenkins
-      credentials:
-          - name: regcred
-      image: index.docker.io/psob/jenkins:lastest
-        ports:
-          - containerPort: 8080
+      - name: jenkins
+        image: index.docker.io/psob/jenkins:lastest
+      imagePullSecrets:
+      - name: regcred
+      ports:
+      - containerPort: 8080
       volumeMounts:
-          - name: jenkins-data
-            mountPath: /var/jenkins_home
+      - name: jenkins-data
+          mountPath: /var/jenkins_home
       volumes:
         - name: jenkins-data
           emptyDir: {}
